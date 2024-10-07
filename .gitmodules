@@ -1,3 +1,4 @@
 [submodule "TeddyShortenerEngine"]
 	path = TeddyShortenerEngine
 	url = git@github.com:ericsantosbr/TeddyShortenerEngine.git
+	branch = main
