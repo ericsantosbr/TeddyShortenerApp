@@ -1,0 +1,33 @@
+services:
+  engine:
+    env_file: ".env"
+    image: node:latest
+    # build:
+    #   context: ./TeddyShortenerEngine
+    #   dockerfile: Dockerfile
+    command: "npm run dev"
+    expose:
+      - 8355
+    ports:
+      - 127.0.0.1:8355:8355
+    working_dir: /home/node/app
+    volumes:
+      - ./TeddyShortenerEngine:/home/node/app
+ 
+  database:
+    env_file: ".env"
+    restart: always
+    image: postgres:latest
+    container_name: postgres
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    
+  auth_database:
+    image: eqalpha/keydb:latest
+    container_name: keydb
+    expose:
+      - 6379
+    ports:
+      - 6379:6379
