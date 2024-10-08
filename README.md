@@ -2,7 +2,7 @@
 
 This is the repo for the backend structure of the system. You can run it using docker compose by simply setting up Docker on your machine (you can find more info [here](https://docs.docker.com/get-started/get-docker/)).
 
-After that, with Docker service running, set up the [environment vars](#environment-vars), start up the project using `docker compose up`. It will create instances for the App Engine, the database and the authentication server.
+After that, with Docker service running, set up the [environment vars](#environment-vars).
 
 ## Environment Vars
 
@@ -24,3 +24,14 @@ After that, with Docker service running, set up the [environment vars](#environm
 |REDIS_BEARER_TOKEN_LIFETIME|1800|The lifetime of user generated tokens|
 
 `POSTGRES_HOSTNAME` and `REDIS_HOSTNAME` must respect the `container_name` parameter configured for each one in the `compose.yaml` file. All of that can be found on the .env file I created. Docker compose will setup the .env file on each container.
+
+## Running the Project
+
+After cloning the project, run the commands to retrieve the project submodules:
+
+```
+git submodule init
+git submodule update --remote
+```
+
+Start up the project using `docker compose up`. It will create an instance for the App Engine, inflate the database and setup the authentication server. Wait for the engine to display `starting \`node index.js\``, then you're good to go.
